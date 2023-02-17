@@ -2,8 +2,8 @@
 #include <fstream>
 #include <conio.h>
 #include <list>
-#include "class_student.h"
-// #include "sleep_cls.h"
+#include "class_student.hpp"
+// #include "sleep_cls.hpp"
 
 using namespace std;
 

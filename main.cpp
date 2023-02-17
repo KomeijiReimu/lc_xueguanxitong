@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "class_student.h"
+#include "class_student.hpp"
 // 存在问题：多次引用sleep_cls.h会报错
 // 登录界面支持linux，主界面引不了sleep_cls.h，只支持win32
 

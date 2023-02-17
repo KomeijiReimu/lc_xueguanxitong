@@ -2,10 +2,10 @@
 #include <fstream>
 #include <conio.h>
 #include <map>
-#include "sleep_cls.h"
-#include "class_student.h"
-#include "password.h"
-#include "md5.h"
+#include "sleep_cls.hpp"
+#include "class_student.hpp"
+#include "password.hpp"
+#include "md5.hpp"
 
 using namespace std;
 

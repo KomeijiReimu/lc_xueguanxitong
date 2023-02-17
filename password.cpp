@@ -1,6 +1,6 @@
 #include <iostream>
 #include <conio.h>
-#include "password.h"
+#include "password.hpp"
 using namespace std;
 
 // 直接对数组进行操作
