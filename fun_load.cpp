@@ -11,7 +11,7 @@ using namespace std;
 
 Password ps;
 fstream key;
-
+My_sleep_cls Koishi;
 map<string, string> login;
 map<string, string>::iterator key_it;
 
@@ -21,7 +21,7 @@ int student::welcome()
     {
         cout << "用户密码存储文件信息缺失，即将被迫回档，重新注册！\n***您可能会失去已有数据***\n按任意键继续... ";
         _getch();
-        my_cls();
+        Koishi.my_cls();
         re_gister(true);
         return 0;
     }
@@ -51,7 +51,7 @@ void student::welcome2()
     for (char *i = weltxt3; *i != '\000'; *i++)
     {
         putchar(*i);
-        my_sleep(8);
+        Koishi.my_sleep(8);
     }
     _getch();
     re_gister(true);
@@ -120,7 +120,7 @@ void student::re_gister(bool n_ew)
                 }
                 cout << "\n修改密码成功！即将返回初始界面！\n 按任意键继续...";
                 _getch();
-                my_cls();
+                Koishi.my_cls();
                 return;
             }
             else
@@ -137,14 +137,14 @@ void student::re_gister(bool n_ew)
                 _getch();
                 return;
             }
-            my_cls();
+            Koishi.my_cls();
 
             for (int i = 3; i > 0; i--)
             {
                 cout << "\t\t\t账户已创建完成，请登录。\n";
                 cout << "\t\t\t" << i << "秒后返回到主页面……" << endl;
-                my_sleep(1000);
-                my_cls();
+                Koishi.my_sleep(1000);
+                Koishi.my_cls();
             }
             return;
         }
@@ -160,7 +160,7 @@ void student::lo_ad()
     for (char *i = weltxt1; *i != '\000'; *i++)
     {
         putchar(*i);
-        my_sleep(8);
+        Koishi.my_sleep(8);
     }
     while (1)
     {
@@ -180,7 +180,7 @@ void student::lo_ad()
     for (char *i = weltxt2; *i != '\000'; *i++)
     {
         putchar(*i);
-        my_sleep(8);
+        Koishi.my_sleep(8);
     }
     while (1)
     {
@@ -198,13 +198,13 @@ void student::lo_ad()
             continue;
         }
     }
-    my_cls();
+    Koishi.my_cls();
     for (int i = 3; i > 0; i--)
     {
         cout << "\t\t\t登陆成功！\n";
         cout << "\t\t\t" << i << "秒后将进入系统……" << endl;
-        my_sleep(1000);
-        my_cls();
+        Koishi.my_sleep(1000);
+        Koishi.my_cls();
     }
     dat_name = ID + ".dat";
     return;

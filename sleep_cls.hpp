@@ -4,20 +4,24 @@
 #else
 #include <unistd.h>
 #endif
-void my_sleep(unsigned int ms)
+class My_sleep_cls
 {
+public:
+    void my_sleep(unsigned int ms)
+    {
 #ifdef _WIN32
-    Sleep(ms);
+        Sleep(ms);
 #else
-    usleep(ms * 1000);
+        usleep(ms * 1000);
 #endif
-}
+    }
 
-void my_cls()
-{
+    void my_cls()
+    {
 #ifdef _WIN32
-    system("cls");
+        system("cls");
 #else
-    system("clear");
+        system("clear");
 #endif
-}
+    }
+};

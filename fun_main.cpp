@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <list>
 #include "class_student.hpp"
-// #include "sleep_cls.hpp"
+#include "sleep_cls.hpp"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ fstream dat;
 list<Tmp_dat> sort_list_stu;
 list<Tmp_dat> list_student;
 list<Tmp_dat>::iterator it;
-
+My_sleep_cls Marisa;
 void student::start()
 {
     while (1)
@@ -22,7 +22,7 @@ void student::start()
         if (!menu())
             break;
     }
-    system("cls");
+    Marisa.my_cls();
     return;
 }
 bool student::init()
@@ -99,7 +99,7 @@ bool student::save()
 int student::menu()
 {
     int n;
-    system("cls");
+    Marisa.my_cls();
     cout << "\t\t\t**********欢迎来到学生信息管理系统**********" << '\n';
     cout << "\t\t\t你可以进行以下操作:" << '\n';
     cout << "\t\t\t|------------------------------------------|" << '\n';
@@ -150,7 +150,7 @@ int student::menu()
 
 int student::look_s()
 {
-    system("cls");
+    Marisa.my_cls();
     cout << "\t\t\t请选择排序方法：\n";
     cout << "1.学号\n";
     cout << "2.姓名\n";
@@ -370,7 +370,7 @@ int student::del_s()
 
 int student::count_s()
 {
-    system("cls");
+    Marisa.my_cls();
     cout << "\t\t\t请选择要统计的信息：\n";
     cout << "1.总人数\n";
     cout << "2.平均分\n";
