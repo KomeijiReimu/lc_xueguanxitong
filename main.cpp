@@ -2,8 +2,9 @@
 #include <fstream>
 #include "class_student.hpp"
 
+// 作者：隋炀
 // 支持多用户登录，修改账号密码
-// V1.0.1
+// V1.0.2
 
 using namespace std;
 int main()
