@@ -8,11 +8,11 @@
 using namespace std;
 
 fstream dat;
-list<Tmp_dat> sort_list_stu;
-list<Tmp_dat> list_student;
-list<Tmp_dat>::iterator it;
-My_sleep_cls Marisa;
-void student::start()
+list<TmpDat> sort_list_stu;
+list<TmpDat> list_student;
+list<TmpDat>::iterator it;
+MySleepCls Marisa;
+void Student::start()
 {
     while (1)
     {
@@ -25,7 +25,7 @@ void student::start()
     Marisa.my_cls();
     return;
 }
-bool student::init()
+bool Student::init()
 {
     bool r = true;
     do
@@ -59,7 +59,7 @@ bool student::init()
             r = false;
             break;
         }
-        Tmp_dat tmp_dat;
+        TmpDat tmp_dat;
         while (dat >> tmp_dat.Num >> tmp_dat.S_name >> tmp_dat.Score)
             sort_list_stu.push_back(tmp_dat);
     } while (0);
@@ -67,13 +67,13 @@ bool student::init()
     copy(sort_list_stu.begin(), sort_list_stu.end(), back_inserter(list_student));
     return r;
 }
-void student::cle_ar()
+void Student::cle_ar()
 {
     sort_list_stu.clear();
     list_student.clear();
     return;
 }
-bool student::save()
+bool Student::save()
 {
     bool r = true;
     dat.open(dat_name, ios::out);
@@ -96,7 +96,7 @@ bool student::save()
     dat.close();
     return r;
 }
-int student::menu()
+int Student::menu()
 {
     int n;
     Marisa.my_cls();
@@ -148,7 +148,7 @@ int student::menu()
     return n;
 }
 
-int student::look_s()
+int Student::look_s()
 {
     Marisa.my_cls();
     cout << "\t\t\t请选择排序方法：\n";
@@ -179,7 +179,7 @@ int student::look_s()
     }
     return n;
 }
-void student::show(bool r, int n)
+void Student::show(bool r, int n)
 {
     if (n)
     {
@@ -209,10 +209,10 @@ void student::show(bool r, int n)
     return;
 }
 
-int student::add_s()
+int Student::add_s()
 {
     int n = 1;
-    Tmp_dat tmp_dat;
+    TmpDat tmp_dat;
     while (1)
     {
         cout << "请输入学号：";
@@ -246,7 +246,7 @@ int student::add_s()
     return n;
 }
 
-bool student::check(int number)
+bool Student::check(int number)
 {
     bool r = false;
     it = list_student.begin();
@@ -262,7 +262,7 @@ bool student::check(int number)
     return r;
 }
 
-int student::modify_s()
+int Student::modify_s()
 {
 
     int n = 1;
@@ -320,7 +320,7 @@ int student::modify_s()
     } while (0);
     return n;
 }
-int student::del_s()
+int Student::del_s()
 {
     int n = 1;
     int r = 0;
@@ -368,7 +368,7 @@ int student::del_s()
     return n;
 }
 
-int student::count_s()
+int Student::count_s()
 {
     Marisa.my_cls();
     cout << "\t\t\t请选择要统计的信息：\n";

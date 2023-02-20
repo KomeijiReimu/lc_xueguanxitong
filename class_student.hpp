@@ -1,6 +1,6 @@
 #pragma once
 
-class Tmp_dat
+class TmpDat
 {
 public:
     long long Num;
@@ -8,7 +8,7 @@ public:
     double Score;
 };
 
-class student
+class Student
 {
 public:
     bool check_file(std::string);
@@ -46,17 +46,17 @@ private:
     void show(bool, int);
     bool check(int);
 
-    static bool by_num(Tmp_dat a, Tmp_dat b)
+    static bool by_num(TmpDat a, TmpDat b)
     {
         return a.Num < b.Num;
     }
 
-    static bool by_name(Tmp_dat a, Tmp_dat b)
+    static bool by_name(TmpDat a, TmpDat b)
     {
         return (a.S_name.compare(b.S_name)) < 0;
     }
 
-    static bool by_score(Tmp_dat a, Tmp_dat b)
+    static bool by_score(TmpDat a, TmpDat b)
     {
         return (a.Score != b.Score ? a.Score > b.Score : a.Score < b.Score);
     }

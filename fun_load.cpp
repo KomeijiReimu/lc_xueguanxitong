@@ -11,11 +11,11 @@ using namespace std;
 
 Password ps;
 fstream key;
-My_sleep_cls Koishi;
+MySleepCls Koishi;
 map<string, string> login;
 map<string, string>::iterator key_it;
 
-int student::welcome()
+int Student::welcome()
 {
     if (check_isfile_empty(KEY))
     {
@@ -46,7 +46,7 @@ int student::welcome()
         return 1;
     }
 }
-void student::welcome2()
+void Student::welcome2()
 {
     for (char *i = weltxt3; *i != '\000'; *i++)
     {
@@ -57,7 +57,7 @@ void student::welcome2()
     re_gister(true);
     return;
 }
-void student::re_gister(bool n_ew)
+void Student::re_gister(bool n_ew)
 {
     if (n_ew)
     {
@@ -150,7 +150,7 @@ void student::re_gister(bool n_ew)
         }
     }
 }
-void student::lo_ad()
+void Student::lo_ad()
 {
     if (!key_load())
     {
@@ -210,7 +210,7 @@ void student::lo_ad()
     return;
 }
 
-bool student::key_load()
+bool Student::key_load()
 {
     bool r_key_load = true;
     key.open(KEY, ios::in);
@@ -228,7 +228,7 @@ bool student::key_load()
     key.close();
     return r_key_load;
 }
-bool student::key_save()
+bool Student::key_save()
 {
     bool r_key_save = true;
     key.open(KEY, ios::out);
@@ -249,7 +249,7 @@ bool student::key_save()
     key.close();
     return r_key_save;
 }
-bool student::check_file(string file_name)
+bool Student::check_file(string file_name)
 {
     fstream fs;
     bool r;
@@ -261,7 +261,7 @@ bool student::check_file(string file_name)
     fs.close();
     return r;
 }
-bool student::check_isfile_empty(string file_name)
+bool Student::check_isfile_empty(string file_name)
 {
     int n = 0;
     fstream fs;

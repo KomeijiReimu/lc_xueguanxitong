@@ -4,7 +4,7 @@
 #else
 #include <unistd.h>
 #endif
-class My_sleep_cls
+class MySleepCls
 {
 public:
     void my_sleep(unsigned int ms)
