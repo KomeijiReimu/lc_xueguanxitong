@@ -376,15 +376,9 @@ int Student::count_s()
     cout << "2.平均分\n";
     cout << "0.返回主菜单\n";
     int n;
-    int i = 0;
+    int i = list_student.size();
     double sum = 0;
     cin >> n;
-    it = list_student.begin();
-    while (it != list_student.end())
-    {
-        it++;
-        i++;
-    }
     it = list_student.begin();
     switch (n)
     {
