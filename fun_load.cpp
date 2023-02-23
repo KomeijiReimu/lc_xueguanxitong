@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <conio.h>
 #include <map>
 #include "sleep_cls.hpp"
 #include "class_student.hpp"
@@ -20,7 +19,7 @@ int Student::welcome()
     if (check_isfile_empty(KEY))
     {
         cout << "用户密码存储文件信息缺失，即将被迫回档，重新注册！\n***您可能会失去已有数据***\n按任意键继续... ";
-        _getch();
+        Koishi.my_getch();
         Koishi.my_cls();
         re_gister(true);
         return 0;
@@ -46,6 +45,7 @@ int Student::welcome()
         return 1;
     }
 }
+
 void Student::welcome2()
 {
     for (char *i = weltxt3; *i != '\000'; *i++)
@@ -53,10 +53,11 @@ void Student::welcome2()
         putchar(*i);
         Koishi.my_sleep(8);
     }
-    _getch();
+    Koishi.my_getch();
     re_gister(true);
     return;
 }
+
 void Student::re_gister(bool n_ew)
 {
     if (n_ew)
@@ -66,19 +67,20 @@ void Student::re_gister(bool n_ew)
         if (!check_file(KEY))
         {
             cout << "\n创建用户配置文件失败！\n按任意键返回...";
-            _getch();
+            Koishi.my_getch();
             return;
         }
     }
     else if (!key_load())
     {
-        _getch();
+        Koishi.my_getch();
         return;
     }
     while (1)
     {
         cout << "请创建您的的用户名（技术所限，请不要带空格）：\n";
         cin >> ID;
+        cin.ignore();
         if (login.find(ID) != login.end())
         {
             cout << "该用户名已存在，请重新选择另一个用户名（1）或者修改登录密码（2）";
@@ -115,11 +117,11 @@ void Student::re_gister(bool n_ew)
                 key_it->second = password;
                 if (!key_save())
                 {
-                    _getch();
+                    Koishi.my_getch();
                     return;
                 }
                 cout << "\n修改密码成功！即将返回初始界面！\n 按任意键继续...";
-                _getch();
+                Koishi.my_getch();
                 Koishi.my_cls();
                 return;
             }
@@ -134,7 +136,7 @@ void Student::re_gister(bool n_ew)
             login.insert({ID, password});
             if (!key_save())
             {
-                _getch();
+                Koishi.my_getch();
                 return;
             }
             Koishi.my_cls();
@@ -154,7 +156,7 @@ void Student::lo_ad()
 {
     if (!key_load())
     {
-        _getch();
+        Koishi.my_getch();
         return;
     }
     for (char *i = weltxt1; *i != '\000'; *i++)
@@ -167,6 +169,7 @@ void Student::lo_ad()
         do
         {
             cin >> ID;
+            cin.ignore();
         } while (ID == "\000");
         key_it = login.find(ID);
         if (key_it == login.end())
@@ -199,13 +202,10 @@ void Student::lo_ad()
         }
     }
     Koishi.my_cls();
-    for (int i = 3; i > 0; i--)
-    {
-        cout << "\t\t\t登陆成功！\n";
-        cout << "\t\t\t" << i << "秒后将进入系统……" << endl;
-        Koishi.my_sleep(1000);
-        Koishi.my_cls();
-    }
+    cout << "\t\t\t登陆成功！\n";
+    cout << "\t\t\t按任意键进入系统\n";
+    Koishi.my_getch();
+    Koishi.my_cls();
     dat_name = ID + ".dat";
     return;
 }
@@ -249,6 +249,7 @@ bool Student::key_save()
     key.close();
     return r_key_save;
 }
+
 bool Student::check_file(string file_name)
 {
     fstream fs;
@@ -261,6 +262,7 @@ bool Student::check_file(string file_name)
     fs.close();
     return r;
 }
+
 bool Student::check_isfile_empty(string file_name)
 {
     int n = 0;

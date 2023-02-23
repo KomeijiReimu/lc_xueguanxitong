@@ -1,6 +1,8 @@
 # lc_xueguanxitong
 支持多用户的学管系统
+支持win32，基本支持linux
 
+源代码编码模式为GBK
 
 支持多用户登录，修改账号密码
 

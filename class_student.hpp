@@ -3,7 +3,7 @@
 class TmpDat
 {
 public:
-    long long Num;
+    std::string Num;
     std::string S_name;
     double Score;
 };
@@ -16,24 +16,13 @@ public:
     void welcome2();
     void start();
     std::string KEY = "key.ini";
-    ;
 
 private:
-    std::string a, b;
-    std::string ID, password, p_password;
-
-    char weltxt1[1000] = "欢迎您使用本【学生信息管理系统】，请您在下方输入您的用户名和密码进行登录\n\n请输入您的用户名:  \n";
-    char weltxt2[1000] = "请输入密码： \n";
-    char weltxt3[1000] = "欢迎您首次使用本【学生信息管理系统】，请您创建一个用户名和密码来使用本系统。\n\n请按任意键继续...  \n";
     bool check_isfile_empty(std::string);
-    std::string tmp;
     void re_gister(bool);
     void lo_ad();
     bool key_load();
     bool key_save();
-
-    std::string dat_name;
-
     bool init();
     void cle_ar();
     bool save();
@@ -42,9 +31,14 @@ private:
     int add_s();
     int del_s();
     int modify_s();
+    int find_s();
+    void find_bynum();
+    void find_byname();
+    void find_during();
     int count_s();
     void show(bool, int);
-    bool check(int);
+    bool check(std::string);
+    bool check_is_num(std::string &str);
 
     static bool by_num(TmpDat a, TmpDat b)
     {
@@ -60,4 +54,14 @@ private:
     {
         return (a.Score != b.Score ? a.Score > b.Score : a.Score < b.Score);
     }
+
+    std::string a, b;
+    std::string ID, password, p_password;
+
+    char weltxt1[1000] = "欢迎您使用本【学生信息管理系统】，请您在下方输入您的用户名和密码进行登录\n\n请输入您的用户名:  \n";
+    char weltxt2[1000] = "请输入密码： \n";
+    char weltxt3[1000] = "欢迎您首次使用本【学生信息管理系统】，请您创建一个用户名和密码来使用本系统。\n\n请按任意键继续...  \n";
+
+    std::string tmp;
+    std::string dat_name;
 };

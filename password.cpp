@@ -1,9 +1,11 @@
 #include <iostream>
-#include <conio.h>
 #include "password.hpp"
+#include "sleep_cls.hpp"
 using namespace std;
 
 // 直接对数组进行操作
+
+MySleepCls Yukari;
 
 void Password::key_start()
 {
@@ -13,18 +15,24 @@ void Password::key_start()
     for (char *i = Final_password; *i != '\000'; *i++)
         *i = '\000';
     // 进入输入判断
-    while (tmpc != 0x0d) // 非回车
+    while (tmpc != _enter_) // 非回车
     {
-        tmpc = _getch();
+        tmpc = Yukari.my_getch();
         switch (tmpc)
         {
-        case 0x08: // 回退键
+        case _back_: // 回退键
             backspace(Final_password);
             break;
-        case 0x0d: // 回车键结束
+        case _enter_: // 回车键结束
             break;
-        case 0xe0: // 方向键，注意系统返回两次getch
-            leftRight(_getch());
+        case _directon_: // 方向键，注意win32返回两次getch,linux返回三次
+#ifdef _WIN32
+            leftRight(Yukari.my_getch());
+
+#else
+            Yukari.my_getch();
+            leftRight(Yukari.my_getch());
+#endif
             break;
         default:
             if (Last_password != 200)
@@ -35,14 +43,14 @@ void Password::key_start()
 }
 
 void Password::leftRight(int direction)
-{                          // 方向键
-    if (direction == 0x4b) // <-
+{                            // 方向键
+    if (direction == _left_) // <-
         if (!(Passwording <= 0))
         {
             Passwording--;
             putchar('\b'); // 光标向左移动
         }
-    if (direction == 0x4d) // ->
+    if (direction == _rigth_) // ->
         if (!(Passwording >= Last_password))
         {
             Passwording++;
@@ -57,8 +65,8 @@ void Password::backspace(char *Lpw) // 传不传指针都可以(?)
         for (int i = Passwording - 1; i < Last_password; i++)
             Lpw[i] = Lpw[i + 1];                // 后面的整体向前移动一位，覆盖掉当前删除的数
         Final_password[Last_password] = '\000'; // 干掉多余的最后一位
-        Passwording--;                          
-        Last_password--;                        
+        Passwording--;
+        Last_password--;
         do
         { // 下面这块也比较奇妙，莫名其妙就试出来了
             for (int i = 0; i <= Last_password; i++)
@@ -77,15 +85,15 @@ void Password::backspace(char *Lpw) // 传不传指针都可以(?)
 }
 
 void Password::ins(int t)
-{                    // 写入，最关键的一步
-    Last_password++; // 最后位数++
+{ // 写入，最关键的一步
+    Last_password++;
     if (Last_password > Passwording)
     {
         for (int i = Last_password; i >= Passwording; i--)
-            Final_password[i] = Final_password[i - 1]; // 把后面的几个字符全部后移一位,然后再在当前位写入新字符
+            Final_password[i] = Final_password[i - 1];
     }
-    Final_password[Passwording] = t; // 写入
-    Passwording++;                   // 指针++
+    Final_password[Passwording] = t;
+    Passwording++;
     for (int i = 0; i <= (Last_password - Passwording); i++)
         putchar('*');
     for (int i = 0; i < (Last_password - Passwording); i++)
