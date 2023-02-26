@@ -322,8 +322,15 @@ int Student::modify_s()
         {
             if (it->Num == number)
             {
-                cout << "请输入学号：";
-                cin >> number;
+                while (1)
+                {
+                    cout << "请输入学号：";
+                    cin >> number;
+                    if (check(number))
+                        cout << "学号已存在，请勿重复输入！\n";
+                    else
+                        break;
+                }
                 cout << "请输入姓名：";
                 cin >> name;
                 cout << "请输入分数：";
