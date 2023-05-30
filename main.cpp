@@ -2,7 +2,7 @@
 #include <fstream>
 #include "class_student.hpp"
 
-// 作者：隋炀
+
 // 支持多用户登录，修改账号密码，基本支持linux
 // V1.1.0
 
